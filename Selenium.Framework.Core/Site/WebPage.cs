@@ -8,7 +8,7 @@ namespace Selenium.Framework.Core
 {
     public class WebPage
     {
-        public ChromeDriver driver { get; set; }
+        public IWebDriver driver { get; set; }
 
         public string Url { get; set; }
 
