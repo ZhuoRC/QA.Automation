@@ -38,7 +38,7 @@ namespace Selenium.Droid.RebootRouter
             }
             finally
             {
-                router.Quit();
+                Browser.Close(router);
             }
 
         }

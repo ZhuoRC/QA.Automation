@@ -46,9 +46,5 @@ namespace Selenium.Framework.Core
             }
         }
 
-        public void Quit()
-        {
-            driver.Quit();
-        }
     }
 }
