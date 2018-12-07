@@ -5,6 +5,7 @@ using OpenQA.Selenium.IE;
 using OpenQA.Selenium.Remote;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 using System.Threading;
 
@@ -16,19 +17,22 @@ namespace Selenium.Framework.Core.Driver
 
         public static object Open(Enum type)
         {
+            dynamic objType = (new WebPage()).GetType();
+            string driverPath = Path.GetDirectoryName(objType.Assembly.Location)+ "\\Driver";
+            Console.WriteLine("selenium driver path: "+driverPath);
             if (type.Equals(Type.Chrome))
             {
-                ChromeDriver driver = new ChromeDriver(@".\Driver\");
+                ChromeDriver driver = new ChromeDriver(driverPath);
                 return driver;
             }
             if (type.Equals(Type.Firefox))
             {
-                FirefoxDriver driver = new FirefoxDriver(@".\Driver\");
+                FirefoxDriver driver = new FirefoxDriver(driverPath);
                 return driver;
             }
             if (type.Equals(Type.IE))
             {
-                InternetExplorerDriver driver = new InternetExplorerDriver(@".\Driver\");
+                InternetExplorerDriver driver = new InternetExplorerDriver(driverPath);
                 return driver;
             }
 
