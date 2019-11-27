@@ -11,7 +11,7 @@ namespace Selenium.Framework.Core
 {
     public class WebPage
     {
-        public IWebDriver driver { get; set; }
+        public IWebDriver _driver { get; set; }
 
         public string Url { get; set; }
 
@@ -25,8 +25,8 @@ namespace Selenium.Framework.Core
             this.Url = url;
             if (type.Equals(Browser.Type.Chrome))
             {
-                this.driver = (ChromeDriver)Browser.Open(Browser.Type.Chrome);
-                driver.Navigate().GoToUrl(url);
+                this._driver = (ChromeDriver)Browser.Open(Browser.Type.Chrome);
+                _driver.Navigate().GoToUrl(url);
                 ConsoleLogger.Log("Open url: " + url);
             }
         }
@@ -34,35 +34,42 @@ namespace Selenium.Framework.Core
 
         public void EditInputText(string id,string text)
         {
-            driver.FindElement(By.Id(id)).Clear();
-            driver.FindElement(By.Id(id)).SendKeys(text);
+            _driver.FindElement(By.Id(id)).Clear();
+            _driver.FindElement(By.Id(id)).SendKeys(text);
             ConsoleLogger.Log("Edit InputText: " + text);
         }
 
         public void Click(string id)
         {
-            driver.FindElement(By.Id(id)).Click();
-            ConsoleLogger.Log("Click: " + driver.FindElement(By.Id(id)).Text);
+            _driver.FindElement(By.Id(id)).Click();
+            ConsoleLogger.Log("Click: " + _driver.FindElement(By.Id(id)).Text);
         }
 
-        public void Clicks(string id)
+        public void ClickById(string id)
         {
-            var nav_items_count = driver.FindElement(By.Id(id)).FindElements(By.CssSelector("li")).Count;
+            var nav_items_count = _driver.FindElement(By.Id(id)).FindElements(By.CssSelector("li")).Count;
 
             for (int i = 1; i <= nav_items_count; i++)
             {
-                driver.FindElement(By.Id(id)).FindElement(By.CssSelector("li:nth-child("+i.ToString()+") > a")).Click();
-                ConsoleLogger.Log("Click: " + driver.FindElement(By.Id(id)).FindElement(By.CssSelector("li:nth-child(" + i.ToString() + ")")).Text);
-                WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(3));
+                _driver.FindElement(By.Id(id)).FindElement(By.CssSelector("li:nth-child("+i.ToString()+") > a")).Click();
+                ConsoleLogger.Log("Click: " + _driver.FindElement(By.Id(id)).FindElement(By.CssSelector("li:nth-child(" + i.ToString() + ")")).Text);
+                WebDriverWait wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(3));
             }
             
+        }
+
+        public void ClickByXPath(string xpath)
+        {
+            ConsoleLogger.Log("will click: " + _driver.FindElement(By.XPath(xpath)).GetAttribute("value"));
+            _driver.FindElement(By.XPath(xpath)).Click();
+            WebDriverWait wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(3));
         }
 
         public void ClickAlertMessage(string action)
         {
             if (action.Equals("OK"))
             {
-                driver.SwitchTo().Alert().Accept();
+                _driver.SwitchTo().Alert().Accept();
             }
         }
 

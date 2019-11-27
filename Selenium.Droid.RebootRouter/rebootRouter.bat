@@ -1,1 +1,0 @@
-dotnet Selenium.Droid.RebootRouter.dll

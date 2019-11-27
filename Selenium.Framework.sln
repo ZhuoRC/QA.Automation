@@ -1,15 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.102
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29509.3
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Selenium.Framework.Core", "Selenium.Framework.Core\Selenium.Framework.Core.csproj", "{CA6F34AA-9867-42C9-9D9A-A557668871F0}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Selenium.Framework.Core.Test", "Selenium.Framework.Core.Test\Selenium.Framework.Core.Test.csproj", "{B44433CD-8D34-47D5-AC72-0033F80029AD}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Selenium.Droid.RebootRouter", "Selenium.Droid.RebootRouter\Selenium.Droid.RebootRouter.csproj", "{1004E85B-E38C-40FC-8DB1-1FECD61213DF}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Selenium.Droid.ColdLoading", "Selenium.Droid.ColdLoading\Selenium.Droid.ColdLoading.csproj", "{3DE91A97-0597-4B88-9D90-CB07E8C1FB79}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Selenium.Sample", "Selenium.Sample\Selenium.Sample.csproj", "{5A9EBF55-66BF-4D14-94AC-CBCBE6069661}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,14 +23,10 @@ Global
 		{B44433CD-8D34-47D5-AC72-0033F80029AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B44433CD-8D34-47D5-AC72-0033F80029AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B44433CD-8D34-47D5-AC72-0033F80029AD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1004E85B-E38C-40FC-8DB1-1FECD61213DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1004E85B-E38C-40FC-8DB1-1FECD61213DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1004E85B-E38C-40FC-8DB1-1FECD61213DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1004E85B-E38C-40FC-8DB1-1FECD61213DF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3DE91A97-0597-4B88-9D90-CB07E8C1FB79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3DE91A97-0597-4B88-9D90-CB07E8C1FB79}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3DE91A97-0597-4B88-9D90-CB07E8C1FB79}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3DE91A97-0597-4B88-9D90-CB07E8C1FB79}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A9EBF55-66BF-4D14-94AC-CBCBE6069661}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A9EBF55-66BF-4D14-94AC-CBCBE6069661}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A9EBF55-66BF-4D14-94AC-CBCBE6069661}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A9EBF55-66BF-4D14-94AC-CBCBE6069661}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

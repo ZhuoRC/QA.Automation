@@ -49,7 +49,7 @@ namespace Selenium.Framework.Core.Driver
         public static void Close(WebPage webPage)
         {
             Thread.Sleep(3000);
-            webPage.driver.Quit();
+            webPage._driver.Quit();
         }
     }
 }
