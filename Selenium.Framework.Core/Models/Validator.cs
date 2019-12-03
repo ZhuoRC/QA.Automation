@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Selenium.Framework.Core.DOMElement
+namespace Selenium.Framework.Core.Models
 {
-    public class Link
+    public class Validator
     {
     }
 }

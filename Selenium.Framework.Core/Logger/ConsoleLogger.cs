@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Selenium.Framework.Core.Logger
+namespace Selenium.Framework.Core
 {
     public static class ConsoleLogger
     {
