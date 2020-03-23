@@ -8,9 +8,9 @@ namespace Selenium.Framework.Core
     {
         public static void Log(string message)
         {
-            Console.WriteLine("----------------------------------------------");
-            Console.WriteLine(DateTime.Now);
+            Console.WriteLine($"------ {DateTime.Now} >>>>>");
             Console.WriteLine(message);
         }
+
     }
 }

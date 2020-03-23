@@ -1,4 +1,4 @@
-$from = "C:\Code\payaware-qa\end2end"
+$from = "C:\Code\payaware-qa\testing"
 
 $to = "C:\Code\Selenium.Framework"
 

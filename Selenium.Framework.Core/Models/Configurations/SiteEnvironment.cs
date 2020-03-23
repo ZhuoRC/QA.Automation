@@ -6,18 +6,19 @@ namespace Selenium.Framework.Core.Models
 {
     public class SiteEnvironment
     {
+
+        public string _environment { get; set; }
         public string Host { get; set; }
 
         public SiteEnvironment()
         {
+
         }
 
-        public SiteEnvironment (string host)
+        public SiteEnvironment(string host)
         {
             this.Host = host;
         }
 
     }
-
-
 }

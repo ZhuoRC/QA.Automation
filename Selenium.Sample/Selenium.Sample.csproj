@@ -16,4 +16,8 @@
     <ProjectReference Include="..\Selenium.Framework.Core\Selenium.Framework.Core.csproj" />
   </ItemGroup>
 
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+    <Exec Command="$(SolutionDir)Selenium.Framework.Core\Driver\terminate_chromedriver.bat" />
+  </Target>
+
 </Project>

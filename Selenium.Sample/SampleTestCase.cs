@@ -1,26 +1,26 @@
-using NUnit.Framework;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Selenium.Framework.Core;
 using Selenium.Framework.Core.Models;
 using System;
 
 namespace Selenium.Sample
 {
+    [TestClass]
     public class Tests
     {
-        [SetUp]
-        public void Setup()
+        [TestInitialize]
+        public void Initialize()
         {
         }
 
-        [Test]
+        [TestMethod]
         public void Test_OpenGoolge()
         {
-            Site google = new Site(Browser.Type.Chrome, new SiteEnvironment("http://www.google.com"));
-            Browser.Close(google);
+
         }
 
-        [TearDown]
-        public void TearDown()
+        [TestCleanup]
+        public void Cleanup()
         {
         }
     }
