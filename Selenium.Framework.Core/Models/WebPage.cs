@@ -36,7 +36,7 @@ namespace Selenium.Framework.Core
             this._assert = new Assertion(driver, logger);
         }
 
-        public void RedirectTo(string url, int waitMs=2000)
+        public void RedirectTo(string url, int waitMs = 2000)
         {
             _driver.Navigate().GoToUrl(url);
             _log.Log($"redirect to {url}");
@@ -67,6 +67,11 @@ namespace Selenium.Framework.Core
         {
             ((IJavaScriptExecutor)_driver).ExecuteScript("arguments[0].scrollIntoView(true);", webElement);
             Thread.Sleep(200);
+        }
+
+        public IWebElement GetSiblingWebElement(IWebElement webElement)
+        {
+            return webElement.FindElement(By.XPath("following-sibling::*"));
         }
         #endregion
 
@@ -210,6 +215,10 @@ namespace Selenium.Framework.Core
             }
         }
 
+        public bool ReadOnlyWebElement(IWebElement webElement)
+        {
+            return webElement.GetAttribute("readonly").Equals("true");
+        }
         #endregion
 
     }

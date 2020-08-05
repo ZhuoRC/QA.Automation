@@ -1,5 +1,6 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Opera;
 using OpenQA.Selenium.Remote;
 using Selenium.Framework.Core.Models;
 using System;
@@ -15,9 +16,15 @@ namespace Selenium.Framework.Core
         static public IWebDriver Open(Browser browser)
         {
 
+
             if (browser.Type.Equals(BrowserType.Chrome))
             {
                 return OpenChrome(browser);
+            }
+
+            if (browser.Type.Equals(BrowserType.Opera))
+            {
+                return OpenOpera(browser);
             }
 
             return null;
@@ -25,9 +32,6 @@ namespace Selenium.Framework.Core
 
         static public IWebDriver OpenChrome(Browser browser)
         {
-
-            
-
             ChromeOptions options = new ChromeOptions();
             options.AddArgument("--start-maximized");
             //options.AddArgument("--headless");
@@ -48,6 +52,15 @@ namespace Selenium.Framework.Core
                 
             }
             IWebDriver driver = new ChromeDriver(browser.SeleniumWebDriverPath, options);
+            return driver;
+        }
+
+        static public IWebDriver OpenOpera(Browser browser)
+        {
+            OperaOptions options = new OperaOptions();
+            options.AddArgument("--start-maximized");
+
+            IWebDriver driver = new OperaDriver(browser.SeleniumWebDriverPath, options);
             return driver;
         }
 

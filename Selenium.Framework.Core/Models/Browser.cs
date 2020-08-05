@@ -5,7 +5,7 @@ using System.IO;
 namespace Selenium.Framework.Core
 {
 
-    public enum BrowserType { Chrome, Firefox, IE };
+    public enum BrowserType { Chrome, Firefox, IE, Opera };
 
     public class Browser
     {
@@ -41,6 +41,10 @@ namespace Selenium.Framework.Core
             if (type.Equals("ie"))
             {
                 this.Type = BrowserType.IE;
+            }
+            if (type.Equals("opera"))
+            {
+                this.Type = BrowserType.Opera;
             }
         }
 

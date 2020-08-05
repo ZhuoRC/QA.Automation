@@ -24,7 +24,7 @@ namespace Selenium.Framework.Core.Validation
         #region Exist
 
 
-        public void ExistElement(IWebElement webElement, string failMessage)
+        public void ExistElement(IWebElement webElement, string failMessage="")
         {
             try
             {
@@ -91,15 +91,38 @@ namespace Selenium.Framework.Core.Validation
             {
                 Thread.Sleep(2000);
 
+                this.ExistElement(webElement);
+
+
                 Assert.IsTrue(text == webElement.Text, failMessage);
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                Assert.Fail($"webElement not exist");
+                Assert.Fail($"Expect: {text}, Actual: {webElement.Text}. Exception: {e.Message}");
             }
             finally
             {
                 _logger.TakeSnapshot(_driver, $"EXACT_TEXT_{text}");
+            }
+        }
+
+        public void MatchValue(IWebElement webElement, string value, string failMessage)
+        {
+            try
+            {
+                Thread.Sleep(2000);
+
+                this.ExistElement(webElement);
+
+                Assert.IsTrue(value == webElement.GetAttribute("value"), failMessage);
+            }
+            catch (Exception e)
+            {
+                Assert.Fail($"Expect: {value}, Actual: {webElement.Text}. Exception: {e.Message}");
+            }
+            finally
+            {
+                _logger.TakeSnapshot(_driver, $"EXACT_TEXT_{value}");
             }
         }
         #endregion

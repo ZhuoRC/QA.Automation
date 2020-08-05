@@ -68,10 +68,17 @@ namespace Testing.Infrastructure
         static HttpWebResponse _webResponse;
         static string _webResponseContent;
 
+
+        static public string _authToken { get; set; }
+
         static void AddAuthentication()
         {
-            _webRequest.PreAuthenticate = true;
-            _webRequest.Headers.Add("Authorization", "Bearer " + "eyJhbGciOiJSUzI1NiIsImtpZCI6IkpfYnNaNXBUY0xpT0dVTHNad04zV0EiLCJ0eXAiOiJhdCtqd3QifQ.eyJuYmYiOjE1OTA2Mzg3NDUsImV4cCI6MTU5MzIzMDc0NSwiaXNzIjoiaHR0cHM6Ly9zdGFnaW5nLXBheWF3YXJlLWlkZW50aXR5c2VydmVyLmxhdmFzb2Z0Lm5ldCIsImF1ZCI6InBheWF3YXJlLmFwaSIsImNsaWVudF9pZCI6InBheWF3YXJlX2FwaV9hdXRvX3Rlc3Rfc3RhZ2luZyIsInN1YiI6IjA0ODVkMDQzLTkzN2UtNGM3My05OThmLTRmZDIxNjViZDNiZSIsImF1dGhfdGltZSI6MTU5MDYzODc0MSwiaWRwIjoibG9jYWwiLCJyb2xlIjoiUFNUU0FkbWluaXN0cmF0b3IiLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJ6aHVvcnVpLmNoZW5AYXZhbnF1ZXN0LmNvbSIsInNjb3BlIjpbInBheWF3YXJlLmFwaS5hY2NvdW50LnJlYWQiLCJwYXlhd2FyZS5hcGkuY2FyZC5yZWFkIiwicGF5YXdhcmUuYXBpLmZ1bmRpbmcucmVhZCIsInBheWF3YXJlLmFwaS5hY2NvdW50LndyaXRlIiwicGF5YXdhcmUuYXBpLmNhcmQud3JpdGUiLCJwYXlhd2FyZS5hcGkuZnVuZGluZy53cml0ZSJdLCJhbXIiOlsicHdkIl19.GXtcYtqEgpHxNijQvVCsq7wTrIhgmLFaFJE3QtF4JR4TuCA1BSI2ffWigMj_0XGQW93TupcDIWairTh8Qq6ea6T92B6sYZPa9EPxKvHjPWaTpJG8iVfv-tdnXWu5srGDaKvb7XKl08gxClYm8gPdo1_WMMOQFLLCwQgYnAbS7fV3HpiqeT7lQavDHOsj467YocnUfRdKfx9PM9FNKafuKdfCpUUEDY1nF6DU5eyQu9GkvBS1U6wffQx4sr5XR42L2l7x7Wd9wfDsWOxNMAXQOXyocs6EIgeoE4ZDoyW98yaOWbuc3vKxjwZYJtRHVfTxvI_GERy5oBA51LEEpovWrw");
+
+            if (_authToken.Length > 0)
+            {
+                _webRequest.PreAuthenticate = true;
+                _webRequest.Headers.Add("Authorization", "Bearer " + _authToken);
+            }
 
         }
 
@@ -107,7 +114,6 @@ namespace Testing.Infrastructure
             _webRequest = WebRequest.CreateHttp(url);
 
             _webRequest.Method = "GET";
-
 
             AddAuthentication();
 
