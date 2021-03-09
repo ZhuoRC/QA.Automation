@@ -1,12 +1,7 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Opera;
-using OpenQA.Selenium.Remote;
-using Selenium.Framework.Core.Models;
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Text;
 using System.Threading;
 
 namespace Selenium.Framework.Core
@@ -49,7 +44,7 @@ namespace Selenium.Framework.Core
             }
             else
             {
-                
+
             }
             IWebDriver driver = new ChromeDriver(browser.SeleniumWebDriverPath, options);
             return driver;
@@ -57,10 +52,20 @@ namespace Selenium.Framework.Core
 
         static public IWebDriver OpenOpera(Browser browser)
         {
+
             OperaOptions options = new OperaOptions();
             options.AddArgument("--start-maximized");
 
-            IWebDriver driver = new OperaDriver(browser.SeleniumWebDriverPath, options);
+            options.BinaryLocation = $"{browser.SeleniumWebDriverPath}\\operadriver.exe";
+            options.BinaryLocation = @"C:\Opera\launcher.exe";
+            options.BinaryLocation = @"C:\Opera\73.0.3856.344\opera.exe";
+            IWebDriver driver = new OperaDriver(options);
+
+
+            //OperaOptions options = new OperaOptions();
+            //options.AddArgument("--start-maximized");
+
+            //IWebDriver driver = new OperaDriver(browser.SeleniumWebDriverPath, options);
             return driver;
         }
 

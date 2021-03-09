@@ -13,8 +13,10 @@ namespace Selenium.Framework.Core
 
 
 
-        public string SeleniumWebDriverPath { 
-            get {
+        public string SeleniumWebDriverPath
+        {
+            get
+            {
                 dynamic objType = (new Site()).GetType();
                 return Path.GetDirectoryName(objType.Assembly.Location) + "\\Driver";
             }
@@ -22,8 +24,8 @@ namespace Selenium.Framework.Core
         }
 
         public IBrowserExtension BrowserExtension { get; set; }
-        
-        public Browser(string type, IBrowserExtension ext=null)
+
+        public Browser(string type, IBrowserExtension ext = null)
         {
 
             if (type.Equals("chrome"))
@@ -66,7 +68,7 @@ namespace Selenium.Framework.Core
         public string ExtensionWebStoreKey { get; set; }
         public string ExtensionLocalPath { get; set; }
 
-        public ChromeExtension(string id, string webStoreKey, string localPath) 
+        public ChromeExtension(string id, string webStoreKey, string localPath)
         {
             this.ExtensionId = id;
             this.ExtensionWebStoreKey = webStoreKey;

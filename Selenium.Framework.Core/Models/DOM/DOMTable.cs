@@ -1,10 +1,5 @@
 ﻿using OpenQA.Selenium;
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Drawing;
-using System.Text;
 
 namespace Selenium.Framework.Core.Models
 {
@@ -40,7 +35,7 @@ namespace Selenium.Framework.Core.Models
                 TableRows.Add(new TableRow(row, _rowIndex));
                 _rowIndex++;
             }
-            
+
         }
 
         #region Headers
@@ -63,12 +58,12 @@ namespace Selenium.Framework.Core.Models
 
         public List<TableRow> TableRows { get; set; }
 
-        public class TableRow 
+        public class TableRow
         {
             public List<TableCell> TableCells { get; set; }
             public int RowIndex { get; set; }
 
-            public TableRow(IWebElement row,int rowIndex)
+            public TableRow(IWebElement row, int rowIndex)
             {
                 TableCells = new List<TableCell>();
                 foreach (IWebElement cell in row.FindElements(By.TagName("td")))
@@ -91,7 +86,7 @@ namespace Selenium.Framework.Core.Models
             }
         }
 
-        
+
     }
 
 

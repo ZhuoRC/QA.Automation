@@ -2,8 +2,6 @@
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading;
 
 namespace Selenium.Framework.Core.Validation
@@ -24,7 +22,7 @@ namespace Selenium.Framework.Core.Validation
         #region Exist
 
 
-        public void ExistElement(IWebElement webElement, string failMessage="")
+        public void ExistElement(IWebElement webElement, string failMessage = "")
         {
             try
             {
@@ -134,7 +132,7 @@ namespace Selenium.Framework.Core.Validation
             SelectElement select = new SelectElement(webElement);
             string selectedOption = select.SelectedOption.Text;
 
-            Assert.IsTrue(selectedOption == text, failMessage); 
+            Assert.IsTrue(selectedOption == text, failMessage);
         }
         #endregion
     }

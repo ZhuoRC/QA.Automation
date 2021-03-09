@@ -1,10 +1,6 @@
 ﻿using OpenQA.Selenium;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Text;
-using System.Text.RegularExpressions;
-using Testing.Infrastructure;
 
 namespace Selenium.Framework.Core
 {
@@ -17,7 +13,7 @@ namespace Selenium.Framework.Core
         public FileLogger(string loggerName, string className)
         {
             string rootPath = @"C:\Logs\TestResults";
-            
+
             string directoryPath = $@"{rootPath}\{DateTime.Now.ToString("yyyyMMdd_HHmmss")}_{className}_{loggerName}\";
 
             Directory.CreateDirectory(directoryPath);

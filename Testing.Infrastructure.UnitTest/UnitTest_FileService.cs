@@ -12,7 +12,7 @@ namespace Testing.Infrastructure.UnitTest
             List<TestClass> items = new List<TestClass>();
             items.Add(new TestClass(1, "test element 001"));
             items.Add(new TestClass(2, "test element 002"));
-            
+
             string jsonPath = "UnitTest_FileService_TestClass.json";
 
             FileService.SaveJson<TestClass>(items, jsonPath);
@@ -29,7 +29,7 @@ namespace Testing.Infrastructure.UnitTest
 
     public class TestClass
     {
-        public TestClass(int id , string text)
+        public TestClass(int id, string text)
         {
             this.Id = id;
             this.Text = text;

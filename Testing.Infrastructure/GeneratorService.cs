@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading;
@@ -27,12 +25,12 @@ namespace Testing.Infrastructure
             return sb.ToString();
         }
 
-        static public string GetMD5Hash(int length = 4,string salt="salt")
+        static public string GetMD5Hash(int length = 4, string salt = "salt")
         {
             Thread.Sleep(11);
             string key = DateTime.Now.ToString("yyyyMMdd-HHmmssfff");
             string hash = CalculateMD5Hash(key + salt);
-            return hash.Substring(1,length);
+            return hash.Substring(1, length);
         }
 
         static public string GetRefNumber(string prefix)

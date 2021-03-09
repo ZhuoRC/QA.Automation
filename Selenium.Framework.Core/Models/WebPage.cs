@@ -1,11 +1,11 @@
-﻿using OpenQA.Selenium;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
-using System;
-using SeleniumExtras.PageObjects;
-using System.Threading;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Selenium.Framework.Core.Validation;
+using SeleniumExtras.PageObjects;
+using System;
+using System.Threading;
 
 namespace Selenium.Framework.Core
 {
@@ -36,6 +36,14 @@ namespace Selenium.Framework.Core
             this._assert = new Assertion(driver, logger);
         }
 
+        public void MaximizeWindow()
+        {
+            _driver.Manage().Window.Maximize();
+        }
+
+
+        #region Indicate
+
         public void RedirectTo(string url, int waitMs = 2000)
         {
             _driver.Navigate().GoToUrl(url);
@@ -43,7 +51,6 @@ namespace Selenium.Framework.Core
             Thread.Sleep(waitMs);
         }
 
-        #region Indicate
         public void SwitchToFrame(IWebElement webElement)
         {
             Thread.Sleep(2000);
@@ -73,6 +80,8 @@ namespace Selenium.Framework.Core
         {
             return webElement.FindElement(By.XPath("following-sibling::*"));
         }
+
+
         #endregion
 
         #region Click
@@ -87,7 +96,7 @@ namespace Selenium.Framework.Core
             Thread.Sleep(200);
         }
 
-        public void SubmitClick(IWebElement webElement, int timeout=2000)
+        public void SubmitClick(IWebElement webElement, int timeout = 2000)
         {
             string domText = webElement.Text;
             _log.Log($"submit click {domText}");
@@ -122,6 +131,16 @@ namespace Selenium.Framework.Core
             webElement.SendKeys(input);
             webElement.SendKeys(Keys.Tab);
 
+        }
+
+        public string GetSelectedOptionText(IWebElement webElement)
+        {
+            MoveToElement(webElement);
+            SelectElement select = new SelectElement(webElement);
+            string selectedOption = select.SelectedOption.Text;
+            _log.TakeSnapshot(_driver, $"SELECTED_OPTION_{selectedOption}");
+
+            return selectedOption;
         }
 
         public void SelectOptionByText(IWebElement webElement, string text)
@@ -160,17 +179,17 @@ namespace Selenium.Framework.Core
 
         public void WaitForClick(IWebElement webElement, int timeoutSecond = 10)
         {
-            
+
             try
             {
-                
+
                 JSClick(
                     new WebDriverWait(_driver, new TimeSpan(0, 0, timeoutSecond))
                     .Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(webElement))
                 );
-                
+
                 Thread.Sleep(2000);
-    
+
             }
             catch (Exception)
             {
@@ -196,7 +215,7 @@ namespace Selenium.Framework.Core
         public void WaitForText(IWebElement webElement, string text, int timeoutSecond = 10)
         {
             new WebDriverWait(_driver, new TimeSpan(0, 0, timeoutSecond))
-                .Until(SeleniumExtras.WaitHelpers.ExpectedConditions.TextToBePresentInElement(webElement,text));
+                .Until(SeleniumExtras.WaitHelpers.ExpectedConditions.TextToBePresentInElement(webElement, text));
         }
         #endregion
 
@@ -219,6 +238,22 @@ namespace Selenium.Framework.Core
         {
             return webElement.GetAttribute("readonly").Equals("true");
         }
+
+        public bool ExistOptionInSelectElement(IWebElement webElement, string optionText)
+        {
+            var options = webElement.FindElements(By.TagName("option"));
+            foreach (var option in options)
+            {
+                if (option.Text == optionText)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+
         #endregion
 
     }

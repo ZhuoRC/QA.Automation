@@ -1,8 +1,6 @@
 ﻿using Bogus;
 using Bogus.DataSets;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Testing.Infrastructure
 {
@@ -42,9 +40,13 @@ namespace Testing.Infrastructure
         public int ExpiryMonth { get; set; }
         public int ExpiryYear { get; set; }
         public string CVV { get; set; }
-        public string BillingCurrency { get; set; }
 
-        public CreditCard(CardType cardType, int validYear=4)
+        public CreditCard()
+        {
+
+        }
+
+        public CreditCard(CardType cardType, int validYear = 4)
         {
             var faker = new Faker();
 
@@ -52,11 +54,19 @@ namespace Testing.Infrastructure
             this.MaskedPAN = CreditCardService.MaskPAN(this.PAN);
 
             this.ExpiryDate = DateTime.Now.AddYears(validYear);
-            this.ExpiryMonth = this.ExpiryDate.Month;
+            this.ExpiryMonth = faker.Random.Int(1, 12);
             this.ExpiryYear = this.ExpiryDate.Year;
             this.CVV = faker.Finance.CreditCardCvv();
         }
 
+        public CreditCard(string pan, int expiryMonth, int expiryYear)
+        {
+
+            this.PAN = pan;
+            this.MaskedPAN = CreditCardService.MaskPAN(this.PAN);
+            this.ExpiryMonth = expiryMonth;
+            this.ExpiryYear = expiryYear;
+        }
 
     }
 }

@@ -1,9 +1,6 @@
 ﻿using OpenQA.Selenium;
-using Selenium.Framework.Core.Models;
 using Selenium.Framework.Core.Validation;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading;
 
 namespace Selenium.Framework.Core.Models
@@ -86,7 +83,7 @@ namespace Selenium.Framework.Core.Models
             }
             catch (Exception)
             {
-                
+
             }
         }
 
