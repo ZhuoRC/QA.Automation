@@ -4,7 +4,7 @@
     "cypress:run": "cypress run"
   },
   "devDependencies": {
-    "cypress": "^15.5.0"
+    "cypress": "^15.10.0"
   },
   "dependencies": {
     "cypress-downloadfile": "^1.2.4"
